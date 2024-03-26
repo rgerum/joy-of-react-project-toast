@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '../Button';
 
 import styles from './ToastPlayground.module.css';
-import Toast from "../Toast";
 import ToastShelf from "../ToastShelf";
 import {ToastContext} from "../ToastProvider";
 
@@ -17,7 +16,7 @@ function ToastPlayground() {
 
   function onSubmit(event) {
     event.preventDefault();
-    addToast();
+    addToast(message, variant);
     setMessage('');
     setVariant(VARIANT_OPTIONS[0]);
   }

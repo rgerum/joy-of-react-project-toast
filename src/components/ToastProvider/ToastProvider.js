@@ -5,7 +5,7 @@ export const ToastContext = React.createContext();
 function ToastProvider({children}) {
   const [toastList, setToastList] = React.useState([])
 
-  const value = React.memo(() => {return {
+  const value = React.useMemo(() => {return {
     addToast: (message, variant) => {
       const newToastList = [
         ...toastList,
@@ -17,9 +17,12 @@ function ToastProvider({children}) {
       const newToastList = toastList.filter(value => value.id !== id);
       setToastList(newToastList)
     },
+    removeAllToasts: () => {
+      setToastList([])
+    },
     toastList
   }
-  },[toastList])
+  },[toastList]);
 
   return <ToastContext.Provider value={value}>{children}</ToastContext.Provider>;
 }
