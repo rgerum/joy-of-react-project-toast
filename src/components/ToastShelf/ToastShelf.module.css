@@ -12,10 +12,22 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
+  --gap: 16px;
+  --padding: 16px;
   list-style-type: none;
 }
 
 .toastWrapper {
+  --pos: 0;
+  --posY: calc(-1*var(--padding) - var(--pos) * (var(--gap) + 100%));
+  position: absolute;
+  right: var(--padding);
+  bottom: 0; /* calc(16px + var(--pos) * (16px + 56px)) */
+  transform: translateY(var(--posY));
+  transition: transform 400ms;
+}
+
+.toastWrapperInner {
   animation: toast 800ms cubic-bezier(0, 0.46, 0, 1.04) both;
   will-change: transform;
 }

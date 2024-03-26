@@ -19,10 +19,12 @@ function ToastShelf() {
         aria-live="polite"
         aria-label="Notification"
     >
-        {toastList.map(toast => (
-            <li key={toast.id} className={styles.toastWrapper}>
+        {toastList.map((toast, i) => (
+            <li key={toast.id} className={styles.toastWrapper} style={{"--pos": toastList.length - i - 1}}>
+                <div className={styles.toastWrapperInner}>
                 <Toast message={toast.message} variant={toast.variant}
                        doHide={() => removeToast(toast.id)}/>
+                </div>
             </li>))}
     </ol>
   );
