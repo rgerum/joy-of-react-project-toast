@@ -28,8 +28,6 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <ToastShelf/>
-
       <form onSubmit={onSubmit} className={styles.controlsWrapper}>
         <div className={styles.row}>
           <label

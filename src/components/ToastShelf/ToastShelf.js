@@ -13,6 +13,10 @@ function ToastShelf() {
     }
     useEscapeKeyHook(DismissAll)
 
+    function getClassName(toast) {
+        return toast.remove ? `${styles.toastWrapper} ${styles.remove}` : styles.toastWrapper
+    }
+
     return (
     <ol className={styles.wrapper}
         role="region"
@@ -20,7 +24,7 @@ function ToastShelf() {
         aria-label="Notification"
     >
         {toastList.map((toast, i) => (
-            <li key={toast.id} className={styles.toastWrapper} style={{"--pos": toastList.length - i - 1}}>
+            <li key={toast.id} className={getClassName(toast)} style={{"--pos": toastList.length - i - 1}}>
                 <div className={styles.toastWrapperInner}>
                 <Toast message={toast.message} variant={toast.variant}
                        doHide={() => removeToast(toast.id)}/>

@@ -18,7 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({variant, message, doHide}) {
+function Toast({variant, message, remove, doHide}) {
     const Icon = ICONS_BY_VARIANT[variant];
     const className = `${styles.toast} ${styles[variant]}`
   return (
@@ -30,7 +30,7 @@ function Toast({variant, message, doHide}) {
           <VisuallyHidden>
               {variant} -
           </VisuallyHidden>
-          {message}
+          {message} {remove}
       </p>
       <button className={styles.closeButton}
               aria-label="Dismiss message"
